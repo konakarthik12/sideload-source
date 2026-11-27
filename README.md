@@ -3,7 +3,7 @@
 Add this URL in SideStore → **Sources** → **+**:
 
 ```
-https://raw.githubusercontent.com/konakarthik12/ytkace-source/main/source.json
+https://raw.githubusercontent.com/konakarthik12/sideload-source/main/source.json
 ```
 
 | App | Comes from |
@@ -49,7 +49,7 @@ hundred KB per IPA, cached in `cache.json`). If one release has IPAs for differe
 To check for updates immediately:
 
 ```bash
-gh workflow run update-source.yml -R konakarthik12/ytkace-source
+gh workflow run update-source.yml -R konakarthik12/sideload-source
 ```
 
 If an upstream is down, that app's previous entry is kept.
