@@ -1,6 +1,4 @@
-# YTKACE source for SideStore / AltStore (unofficial)
-
-An auto-updating SideStore/AltStore source for [itzzace/ytkace](https://github.com/itzzace/ytkace).
+# Sideload Apps: one auto-updating SideStore / AltStore source
 
 Add this URL in SideStore → **Sources** → **+**:
 
@@ -8,19 +6,56 @@ Add this URL in SideStore → **Sources** → **+**:
 https://raw.githubusercontent.com/konakarthik12/ytkace-source/main/source.json
 ```
 
-## How it works
+| App | Comes from |
+| --- | --- |
+| YTKACE | [itzzace/ytkace](https://github.com/itzzace/ytkace) releases |
+| Reynard Browser | [minh-ton/reynard-browser](https://github.com/minh-ton/reynard-browser)'s own source |
+| Nuvio Enhanced | [luqmanfadlli/NuvioMobile-Enhanced](https://github.com/luqmanfadlli/NuvioMobile-Enhanced)'s own source (stable) |
 
-- A GitHub Action runs every 3 hours (and on demand) and reads YTKACE's latest releases.
-- For each `.ipa` it reads `Info.plist` with HTTP Range requests (only a few hundred KB), to get the
-  bundle ID, version and minimum iOS. Results are cached in `cache.json`.
-- `source.json` links straight to the upstream release files; nothing is re-hosted.
-- The iOS 17+ and iOS 16 builds are listed as separate versions with `minOSVersion` / `maxOSVersion`,
-  so SideStore offers the one that fits your device.
+Not affiliated with any of these projects. Nothing is re-hosted: every download links to the developer's own release.
 
-## Limitation
+## Adding an app
 
-SideStore checks that the IPA's version matches the source, and YTKACE IPAs carry YouTube's version
-(e.g. `21.47.6`), not YTKACE's. So an update only shows when the bundled YouTube version changes. The
-iOS 16 build has stayed on YouTube `21.33.6`, so its newer YTKACE releases won't show as updates.
+Edit [`apps.json`](apps.json) and push. The Action regenerates `source.json` right away, and every 3 hours after that.
 
-Not affiliated with YTKACE.
+**App that already has a source:**
+
+```json
+{ "type": "source", "url": "https://example.com/source.json", "bundleIdentifier": "com.example.app" }
+```
+
+Optional: `"maxVersions": 10` to keep only the newest versions, `"overrides": { "name": "..." }` to change fields.
+
+**App that only has GitHub releases:**
+
+```json
+{
+  "type": "releases",
+  "repo": "owner/name",
+  "assetPattern": "\\.ipa$",
+  "name": "App Name",
+  "subtitle": "One line",
+  "localizedDescription": "Longer description",
+  "iconURL": "icons/app.png",
+  "category": "utilities"
+}
+```
+
+Optional: `"prereleases": true`, `"maxReleases": 10`, `"bundleIdentifier"` (otherwise read from the IPA).
+Bundle ID, version and minimum iOS are read from each IPA's `Info.plist` with HTTP Range requests (a few
+hundred KB per IPA, cached in `cache.json`). If one release has IPAs for different iOS versions, each gets
+`minOSVersion` / `maxOSVersion` so SideStore offers the right one.
+
+To check for updates immediately:
+
+```bash
+gh workflow run update-source.yml -R konakarthik12/ytkace-source
+```
+
+If an upstream is down, that app's previous entry is kept.
+
+## Limitation for `releases` apps
+
+SideStore requires the source's version to match the IPA's own version. YTKACE IPAs carry YouTube's version
+(e.g. `21.47.6`), so a YTKACE update only shows when the bundled YouTube version changes. Its iOS 16 build has
+stayed on YouTube `21.33.6`, so newer YTKACE releases for iOS 16 won't show as updates.

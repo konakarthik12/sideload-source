@@ -1,0 +1,33 @@
+{
+  "source": {
+    "name": "Sideload Apps",
+    "subtitle": "Auto-updating source combining several sideloadable apps",
+    "description": "Generated every 3 hours by GitHub Actions. Each app comes from its developer's own source or GitHub releases; nothing is re-hosted.",
+    "iconURL": "icons/source.png",
+    "tintColor": "#5E5CE6"
+  },
+  "apps": [
+    {
+      "type": "releases",
+      "repo": "itzzace/ytkace",
+      "assetPattern": "^YTKACE_.*\\.ipa$",
+      "name": "YTKACE",
+      "developerName": "itzzace",
+      "subtitle": "YouTube with SponsorBlock, downloads and more",
+      "localizedDescription": "YTKACE is a free, open-source YouTube enhancer and downloader for iOS with SponsorBlock, background playback, player controls, and interface customization.\n\nNote: the version shown is the bundled YouTube version, not YTKACE's.",
+      "iconURL": "icons/ytkace.png",
+      "tintColor": "#E62117",
+      "category": "entertainment"
+    },
+    {
+      "type": "source",
+      "url": "https://github.com/minh-ton/reynard-browser/releases/download/0.0.1-a1/source.json",
+      "bundleIdentifier": "com.minh-ton.Reynard"
+    },
+    {
+      "type": "source",
+      "url": "https://github.com/luqmanfadlli/NuvioMobile-Enhanced/raw/refs/heads/enhanced/store.json",
+      "bundleIdentifier": "com.nuvio.media"
+    }
+  ]
+}
