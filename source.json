@@ -1,12 +1,12 @@
 {
   "name": "Sideload Apps",
-  "identifier": "io.github.konakarthik12.ytkace-source",
+  "identifier": "io.github.konakarthik12.sideload-source",
   "subtitle": "Auto-updating source combining several sideloadable apps",
   "description": "Generated every 3 hours by GitHub Actions. Each app comes from its developer's own source or GitHub releases; nothing is re-hosted.",
-  "sourceURL": "https://raw.githubusercontent.com/konakarthik12/ytkace-source/main/source.json",
-  "iconURL": "https://raw.githubusercontent.com/konakarthik12/ytkace-source/main/icons/source.png",
+  "sourceURL": "https://raw.githubusercontent.com/konakarthik12/sideload-source/main/source.json",
+  "iconURL": "https://raw.githubusercontent.com/konakarthik12/sideload-source/main/icons/source.png",
   "tintColor": "#5E5CE6",
-  "website": "https://github.com/konakarthik12/ytkace-source",
+  "website": "https://github.com/konakarthik12/sideload-source",
   "featuredApps": [
     "com.google.ios.youtube",
     "com.minh-ton.Reynard",
@@ -19,7 +19,7 @@
       "developerName": "itzzace",
       "subtitle": "YouTube with SponsorBlock, downloads and more",
       "localizedDescription": "YTKACE is a free, open-source YouTube enhancer and downloader for iOS with SponsorBlock, background playback, player controls, and interface customization.\n\nNote: the version shown is the bundled YouTube version, not YTKACE's.\n\nBuilt automatically from https://github.com/itzzace/ytkace/releases.",
-      "iconURL": "https://raw.githubusercontent.com/konakarthik12/ytkace-source/main/icons/ytkace.png",
+      "iconURL": "https://raw.githubusercontent.com/konakarthik12/sideload-source/main/icons/ytkace.png",
       "tintColor": "#E62117",
       "category": "entertainment",
       "versions": [
